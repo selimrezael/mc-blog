@@ -20,8 +20,15 @@ class PostsController < ApplicationController
   def show
   end
 
-  def update
+  def edit
+  end
 
+  def update
+    if @post.update post_params
+      redirect_to @post, notice: "Successfully updated the post!"
+    else
+      render 'edit', notice: "Sorry! Something went wrong and not updated!"
+    end
   end
 
   def destroy
